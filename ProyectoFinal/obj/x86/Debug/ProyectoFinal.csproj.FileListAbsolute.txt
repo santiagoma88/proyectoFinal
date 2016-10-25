@@ -1,0 +1,7 @@
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\bin\Debug\ProyectoFinal.exe
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\bin\Debug\ProyectoFinal.pdb
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.ventana.resources
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.Properties.Resources.resources
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.csproj.GenerateResource.Cache
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.exe
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.pdb
