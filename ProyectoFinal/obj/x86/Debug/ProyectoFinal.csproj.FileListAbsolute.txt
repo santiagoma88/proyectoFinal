@@ -5,3 +5,4 @@ C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\De
 C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.csproj.GenerateResource.Cache
 C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.exe
 C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.pdb
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.csprojResolveAssemblyReference.cache

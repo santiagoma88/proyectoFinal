@@ -62,7 +62,6 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ventana
@@ -77,6 +76,8 @@
             this.MaximizeBox = false;
             this.Name = "ventana";
             this.Text = "Peace Runner!!!";
+            this.Load += new System.EventHandler(this.ventana_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ventana_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.player1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).EndInit();
             this.ResumeLayout(false);
