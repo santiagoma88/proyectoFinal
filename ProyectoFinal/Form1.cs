@@ -11,14 +11,42 @@ namespace ProyectoFinal
 {
     public partial class ventana : Form
     {
-        int cambio = 1;
         int direccionp1 = 1;
-        int direccionp2 = 1;
+        int direccionp2 = 2;
+        int cambio = 1;
+        
         public ventana()
         {
             InitializeComponent();
             this.KeyPreview = true;
             
+        }
+
+        private void ventana_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (char)Keys.I)
+            {
+                direccionp1 = 2;   
+            }
+            if (e.KeyChar == (char)Keys.K)
+            {
+                direccionp1 = 1;
+            }
+            if (e.KeyChar == (char)Keys.W)
+            {
+                direccionp2 = 2;
+            }
+            if (e.KeyChar == (char)Keys.S)
+            {
+                direccionp2 = 1;
+            }
+        } 
+
+        private void ventana_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
+            this.KeyPreview = true;
         }
 
         //timer que controlara el movimiento
@@ -204,31 +232,6 @@ namespace ProyectoFinal
             }
 
         }
-
-        private void ventana_Load(object sender, EventArgs e)
-        {
-            timer1.Start();
-        }
-
-        private void ventana_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                MessageBox.Show("Enter key pressed");
-                if (direccionp1 == 1)
-                {
-                    direccionp1 = 2;
-                }
-                if (direccionp1 == 2)
-                {
-                    
-                    direccionp1 = 1;
-                }
-            }
-        }
-
-        
 
         
 
