@@ -21,7 +21,7 @@ namespace ProyectoFinal
         
         
         Random generador = new Random();
-        PictureBox[] barreras = new PictureBox[100];
+        PictureBox[] barreras = new PictureBox[10];
         
         public ventana()
         {
