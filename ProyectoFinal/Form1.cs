@@ -11,35 +11,92 @@ namespace ProyectoFinal
 {
     public partial class ventana : Form
     {
-        int direccionp1 = 1;
-        int direccionp2 = 2;
+        int direccionp1 = 1; // DIRECCION 2 PARA IR HACIA ARRIBA Y DIRECCION 1 PARA IR HACIA ABAJO
+        int direccionp2 = 2; // DIRECCION 2 PARA IR HACIA ARRIBA Y DIRECCION 1 PARA IR HACIA ABAJO
         int cambio = 1;
+        Rectangle r1, r2;
+        bool puedeCambiar1 = false;
+        bool puedeCambiar2 = false;
+        
+        
+        
+        Random generador = new Random();
+        PictureBox[] barreras = new PictureBox[100];
         
         public ventana()
         {
             InitializeComponent();
             this.KeyPreview = true;
-            
+
+
+            int numero;
+            int aleatorio;
+            for (int i = 0; i < barreras.Length;i += 2 )
+            {
+                barreras[i] = new PictureBox();
+                barreras[i + 1] = new PictureBox();
+                aleatorio = (generador.Next(0, 200));
+                if (aleatorio > 100)
+                {
+                    numero = (aleatorio * (-1)) + 100;
+                }
+                else {
+                    numero = aleatorio;
+                }
+                
+
+                if (i == 0)
+                {
+                    barreras[i].Location = new Point(0, 10);
+                    barreras[i].Size = new Size(2000, 50);
+                    barreras[i + 1].Location = new Point(0, 600);
+                    barreras[i + 1].Size = new Size(2000, 50);
+                }
+                else
+                {
+
+                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 50, barreras[i - 2].Location.Y + numero);
+                    barreras[i].Size = new Size(800, 50);
+                    barreras[i + 1].Location = new Point(barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 50, barreras[i - 1].Location.Y + numero);
+                    barreras[i + 1].Size = new Size(800, 50);
+
+                }
+                barreras[i].Image = Properties.Resources.barrera;
+                barreras[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                barreras[i + 1].Image = Properties.Resources.barrera;
+                barreras[i + 1].SizeMode = PictureBoxSizeMode.StretchImage;
+                this.Controls.Add(barreras[i]);
+                this.Controls.Add(barreras[i + 1]);
+            }                         
+
         }
+
+
+
 
         private void ventana_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-            if (e.KeyChar == (char)Keys.I)
+            
+            if ((e.KeyChar == 'm' || e.KeyChar == 'M') && puedeCambiar1 == true)  
             {
-                direccionp1 = 2;   
+                if (direccionp1 == 1) {
+                    direccionp1 = 2;
+                }
+                else
+                {
+                    direccionp1 = 1;
+                }
             }
-            if (e.KeyChar == (char)Keys.K)
+            if ((e.KeyChar == 'X' || e.KeyChar == 'x')&& puedeCambiar2 == true)
             {
-                direccionp1 = 1;
-            }
-            if (e.KeyChar == (char)Keys.W)
-            {
-                direccionp2 = 2;
-            }
-            if (e.KeyChar == (char)Keys.S)
-            {
-                direccionp2 = 1;
+                if (direccionp2 == 1)
+                {
+                    direccionp2 = 2;
+                }
+                else
+                {
+                    direccionp2 = 1;
+                }
             }
         } 
 
@@ -49,192 +106,413 @@ namespace ProyectoFinal
             this.KeyPreview = true;
         }
 
-        //timer que controlara el movimiento
+        //timer que controlara el movimiento del player 1
         private void timer1_Tick(object sender, EventArgs e)
         {
             cambio++;
-
             if (cambio == 1) 
             {
-                if (direccionp1 == 1)
+                if (direccionp1 == 1 && colicionP1() == 1)
                 {
                     player1.Image = Properties.Resources.player11;
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
                 }
-                if (direccionp1 == 2) 
+                else if (direccionp1 == 2 && colicionP1() == 2) 
                 {
                     player1.Image = Properties.Resources.player11;
                     player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
                     player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
                 }
-                if (direccionp2 == 1)
+                else if(direccionp1 == 2 && colicionP1() == 3)
                 {
-                    player2.Image = Properties.Resources.player21;
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                    player1.Image = Properties.Resources.player11;
+                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
                 }
-                if (direccionp2 == 2)
+                else if(direccionp1 == 1 && colicionP1() == 4)
                 {
-                    player2.Image = Properties.Resources.player21;
-                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                    player1.Image = Properties.Resources.player11;
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
+                }
+                else if (direccionp1 == 1 && colicionP1() == 5) 
+                {
+                    player1.Image = Properties.Resources.player11;
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
+                    puedeCambiar1 = false;
+                }
+                else if(direccionp1 == 2 && colicionP1() == 5)
+                {
+                    player1.Image = Properties.Resources.player11;
+                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
+                    puedeCambiar1 = false;
                 }
             }
             if (cambio == 2)
             {
-                if (direccionp1 == 1)
+                if (direccionp1 == 1 && colicionP1() == 1)
                 {
                     player1.Image = Properties.Resources.player12;
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
                 }
-                if (direccionp1 == 2)
+                else if (direccionp1 == 2 && colicionP1() == 2)
                 {
                     player1.Image = Properties.Resources.player12;
                     player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
                     player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
                 }
-                if (direccionp2 == 1)
+                else if (direccionp1 == 2 && colicionP1() == 3)
                 {
-                    player2.Image = Properties.Resources.player22;
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                    player1.Image = Properties.Resources.player12;
+                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
                 }
-                if (direccionp2 == 2)
+                else if (direccionp1 == 1 && colicionP1() == 4)
                 {
-                    player2.Image = Properties.Resources.player22;
-                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
-                }  
+                    player1.Image = Properties.Resources.player12;
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
+                }
+                else if (direccionp1 == 1 && colicionP1() == 5)
+                {
+                    player1.Image = Properties.Resources.player12;
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
+                    puedeCambiar1 = false;
+                }
+                else if (direccionp1 == 2 && colicionP1() == 5)
+                {
+                    player1.Image = Properties.Resources.player12;
+                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
+                    puedeCambiar1 = false;
+                }
             }
             if (cambio == 3)
             {
-                if (direccionp1 == 1)
+                if (direccionp1 == 1 && colicionP1() == 1)
                 {
                     player1.Image = Properties.Resources.player13;
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
                 }
-                if (direccionp1 == 2)
+                else if (direccionp1 == 2 && colicionP1() == 2)
                 {
                     player1.Image = Properties.Resources.player13;
                     player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
                     player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
                 }
-                if (direccionp2 == 1)
+                else if (direccionp1 == 2 && colicionP1() == 3)
                 {
-                    player2.Image = Properties.Resources.player23;
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                    player1.Image = Properties.Resources.player13;
+                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
                 }
-                if (direccionp2 == 2)
+                else if (direccionp1 == 1 && colicionP1() == 4)
                 {
-                    player2.Image = Properties.Resources.player23;
-                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
-                }   
+                    player1.Image = Properties.Resources.player13;
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
+                }
+                else if (direccionp1 == 1 && colicionP1() == 5)
+                {
+                    player1.Image = Properties.Resources.player13;
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
+                    puedeCambiar1 = false;
+                }
+                else if (direccionp1 == 2 && colicionP1() == 5)
+                {
+                    player1.Image = Properties.Resources.player13;
+                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
+                    puedeCambiar1 = false;
+                }
+                
             }
             if (cambio == 4)
             {
-                if (direccionp1 == 1)
+                if (direccionp1 == 1 && colicionP1() == 1)
+                {
+                    player1.Image = Properties.Resources.player14;
+                }
+                else if (direccionp1 == 2 && colicionP1() == 2)
+                {
+                    player1.Image = Properties.Resources.player14;
+                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
+                }
+                else if (direccionp1 == 2 && colicionP1() == 3)
+                {
+                    player1.Image = Properties.Resources.player14;
+                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                }
+                else if (direccionp1 == 1 && colicionP1() == 4)
                 {
                     player1.Image = Properties.Resources.player14;
                     player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
                 }
-                if (direccionp1 == 2)
+                else if (direccionp1 == 1 && colicionP1() == 5)
+                {
+                    player1.Image = Properties.Resources.player14;
+                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
+                    puedeCambiar1 = false;
+                }
+                else if (direccionp1 == 2 && colicionP1() == 5)
                 {
                     player1.Image = Properties.Resources.player14;
                     player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
                     player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
-                }
-                if (direccionp2 == 1)
-                {
-                    player2.Image = Properties.Resources.player24;
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
-                }
-                if (direccionp2 == 2)
-                {
-                    player2.Image = Properties.Resources.player24;
-                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
-                }  
-            }
-            if (cambio == 5)
-            {
-                if (direccionp1 == 1)
-                {
-                    player1.Image = Properties.Resources.player15;
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
-                }
-                if (direccionp1 == 2)
-                {
-                    player1.Image = Properties.Resources.player15;
-                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
-                }
-                if (direccionp2 == 1)
-                {
-                    player2.Image = Properties.Resources.player25;
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
-                }
-                if (direccionp2 == 2)
-                {
-                    player2.Image = Properties.Resources.player25;
-                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
-                }  
-            }
-            if (cambio == 6)
-            {
-                if (direccionp1 == 1)
-                {
-                    player1.Image = Properties.Resources.player16;
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
-                }
-                if (direccionp1 == 2)
-                {
-                    player1.Image = Properties.Resources.player16;
-                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
-                }
-                if (direccionp2 == 1)
-                {
-                    player2.Image = Properties.Resources.player26;
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
-                }
-                if (direccionp2 == 2)
-                {
-                    player2.Image = Properties.Resources.player26;
-                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
-                }  
-            }
-            if (cambio == 7)
-            {
-                if (direccionp1 == 1)
-                {
-                    player1.Image = Properties.Resources.player17;
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y + 5);
-                }
-                if (direccionp1 == 2)
-                {
-                    player1.Image = Properties.Resources.player17;
-                    player1.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player1.Location = new Point(player1.Location.X, player1.Location.Y - 5);
-                }
-                if (direccionp2 == 1)
-                {
-                    player2.Image = Properties.Resources.player27;
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
-                }
-                if (direccionp2 == 2)
-                {
-                    player2.Image = Properties.Resources.player27;
-                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                    puedeCambiar1 = false;
                 }
                 cambio = 1;
             }
+        }
 
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            cambio++;
+            if (cambio == 1)
+            {
+                if (direccionp2 == 1 && colicionP2() == 1)
+                {
+                    player2.Image = Properties.Resources.player21;
+                }
+                else if (direccionp2 == 2 && colicionP2() == 2)
+                {
+                    player2.Image = Properties.Resources.player21;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                }
+                else if (direccionp2 == 2 && colicionP2() == 3)
+                {
+                    player2.Image = Properties.Resources.player21;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                }
+                else if (direccionp2 == 1 && colicionP2() == 4)
+                {
+                    player2.Image = Properties.Resources.player21;
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                }
+                else if (direccionp2 == 1 && colicionP2() == 5)
+                {
+                    player2.Image = Properties.Resources.player21;
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                    puedeCambiar2 = false;
+                }
+                else if (direccionp2 == 2 && colicionP2() == 5)
+                {
+                    player2.Image = Properties.Resources.player21;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                    puedeCambiar2 = false;
+                }
+            }
+            if (cambio == 2)
+            {
+                if (direccionp2 == 1 && colicionP2() == 1)
+                {
+                    player2.Image = Properties.Resources.player22;
+                }
+                else if (direccionp2 == 2 && colicionP2() == 2)
+                {
+                    player2.Image = Properties.Resources.player22;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                }
+                else if (direccionp2 == 2 && colicionP2() == 3)
+                {
+                    player2.Image = Properties.Resources.player22;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                }
+                else if (direccionp2 == 1 && colicionP2() == 4)
+                {
+                    player2.Image = Properties.Resources.player22;
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                }
+                else if (direccionp2 == 1 && colicionP2() == 5)
+                {
+                    player2.Image = Properties.Resources.player22;
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                    puedeCambiar2 = false;
+                }
+                else if (direccionp2 == 2 && colicionP2() == 5)
+                {
+                    player2.Image = Properties.Resources.player22;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                    puedeCambiar2 = false;
+                }
+            }
+            if (cambio == 3)
+            {
+                if (direccionp2 == 1 && colicionP2() == 1)
+                {
+                    player2.Image = Properties.Resources.player23;
+                }
+                else if (direccionp2 == 2 && colicionP2() == 2)
+                {
+                    player2.Image = Properties.Resources.player23;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                }
+                else if (direccionp2 == 2 && colicionP2() == 3)
+                {
+                    player2.Image = Properties.Resources.player23;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                }
+                else if (direccionp2 == 1 && colicionP2() == 4)
+                {
+                    player2.Image = Properties.Resources.player23;
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                }
+                else if (direccionp2 == 1 && colicionP2() == 5)
+                {
+                    player2.Image = Properties.Resources.player23;
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                    puedeCambiar2 = false;
+                }
+                else if (direccionp2 == 2 && colicionP2() == 5)
+                {
+                    player2.Image = Properties.Resources.player23;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                    puedeCambiar2 = false;
+                }
+            }
+            if (cambio == 4)
+            {
+                if (direccionp2 == 1 && colicionP2() == 1)
+                {
+                    player2.Image = Properties.Resources.player24;
+                }
+                else if (direccionp2 == 2 && colicionP2() == 2)
+                {
+                    player2.Image = Properties.Resources.player24;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                }
+                else if (direccionp2 == 2 && colicionP2() == 3)
+                {
+                    player2.Image = Properties.Resources.player24;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                }
+                else if (direccionp2 == 1 && colicionP2() == 4)
+                {
+                    player2.Image = Properties.Resources.player24;
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                }
+                else if (direccionp2 == 1 && colicionP2() == 5)
+                {
+                    player2.Image = Properties.Resources.player24;
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y + 5);
+                    puedeCambiar2 = false;
+                }
+                else if (direccionp2 == 2 && colicionP2() == 5)
+                {
+                    player2.Image = Properties.Resources.player24;
+                    player2.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    player2.Location = new Point(player2.Location.X, player2.Location.Y - 5);
+                    puedeCambiar2 = false;
+                }
+                cambio = 1;
+            }
+        }
+            
+
+        public int colicionP1() 
+        {
+            r1 = new Rectangle();
+            r2 = new Rectangle();
+            r1.Location = new Point(player1.Location.X, player1.Location.Y - 7);
+            r1.Size = new Size(player1.Size.Width, player1.Size.Height+14);
+
+            foreach (PictureBox barrera in barreras)
+            {
+                r2.Location = barrera.Location;
+                r2.Size = barrera.Size;
+
+                if (r1.IntersectsWith(r2) && r1.Location.Y < r2.Location.Y) 
+                {
+                    if (direccionp1 == 1) 
+                    {
+                        puedeCambiar1 = true;
+                        return 1;
+                    }
+                    else if(direccionp1 == 2 && puedeCambiar1 == true)
+                    {
+                        puedeCambiar1 = false;
+                        return 2;
+                    }
+                }
+                else if (r1.IntersectsWith(r2) && r1.Location.Y > r2.Location.Y) 
+                {
+                    if (direccionp1 == 2) 
+                    {
+                        puedeCambiar1 = true;
+                        return 3;
+                    }
+                    else if (direccionp1 == 1 && puedeCambiar1 == true) 
+                    {
+                        puedeCambiar1 = false;
+                        return 4;
+                    }
+                }
+            }
+            return 5;
+            
+            
+        }
+
+        public int colicionP2()
+        {
+            r1 = new Rectangle();
+            r2 = new Rectangle();
+            r1.Location = new Point(player2.Location.X, player2.Location.Y - 7);
+            r1.Size = new Size(player2.Size.Width, player2.Size.Height + 14);
+
+            foreach (PictureBox barrera in barreras)
+            {
+                r2.Location = barrera.Location;
+                r2.Size = barrera.Size;
+
+                if (r1.IntersectsWith(r2) && r1.Location.Y < r2.Location.Y)
+                {
+                    if (direccionp2 == 1)
+                    {
+                        puedeCambiar2 = true;
+                        return 1;
+                    }
+                    else if (direccionp2 == 2 && puedeCambiar2 == true)
+                    {
+                        puedeCambiar2 = false;
+                        return 2;
+                    }
+                }
+                else if (r1.IntersectsWith(r2) && r1.Location.Y > r2.Location.Y)
+                {
+                    if (direccionp2 == 2)
+                    {
+                        puedeCambiar2 = true;
+                        return 3;
+                    }
+                    else if (direccionp2 == 1 && puedeCambiar2 == true)
+                    {
+                        puedeCambiar2 = false;
+                        return 4;
+                    }
+                }
+            }
+            return 5;
+
+
+        }
+
+
+
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            foreach(PictureBox barrera in barreras)
+            {
+                barrera.Location = new Point(barrera.Location.X - 10, barrera.Location.Y);
+            }
+           
         }
 
         
 
-        
+      
+
+          
     }
 }
