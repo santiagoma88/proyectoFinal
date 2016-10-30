@@ -12,7 +12,7 @@ namespace ProyectoFinal
     public partial class ventana : Form
     {
         int direccionp1 = 1; // DIRECCION 2 PARA IR HACIA ARRIBA Y DIRECCION 1 PARA IR HACIA ABAJO
-        int direccionp2 = 2; // DIRECCION 2 PARA IR HACIA ARRIBA Y DIRECCION 1 PARA IR HACIA ABAJO
+        int direccionp2 = 1; // DIRECCION 2 PARA IR HACIA ARRIBA Y DIRECCION 1 PARA IR HACIA ABAJO
         int cambio = 1;
         Rectangle r1, r2;
         bool puedeCambiar1 = false;
@@ -55,9 +55,9 @@ namespace ProyectoFinal
                 else
                 {
 
-                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 50, barreras[i - 2].Location.Y + numero);
+                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 70, barreras[i - 2].Location.Y + numero);
                     barreras[i].Size = new Size(800, 50);
-                    barreras[i + 1].Location = new Point(barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 50, barreras[i - 1].Location.Y + numero);
+                    barreras[i + 1].Location = new Point(barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 70, barreras[i - 1].Location.Y + numero);
                     barreras[i + 1].Size = new Size(800, 50);
 
                 }
