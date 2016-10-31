@@ -18,6 +18,7 @@ namespace ProyectoFinal
                     | System.Windows.Forms.AnchorStyles.Left)
                     | System.Windows.Forms.AnchorStyles.Right)));
             juegoOri.LoadMovie(0, "http://flash.7k7k.com/cms/cms10/20150809/1428084107/222.swf");
+            
         }
     }
 }

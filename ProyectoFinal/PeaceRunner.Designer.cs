@@ -35,6 +35,8 @@
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.player2 = new System.Windows.Forms.PictureBox();
             this.player1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player1)).BeginInit();
             this.SuspendLayout();
@@ -80,14 +82,42 @@
             this.player1.TabIndex = 0;
             this.player1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Font = new System.Drawing.Font("Snap ITC", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.label1.Location = new System.Drawing.Point(561, 350);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 27);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "M";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Font = new System.Drawing.Font("Snap ITC", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(371, 350);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 27);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "X";
+            // 
             // ventana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::ProyectoFinal.Properties.Resources.peace;
+            this.BackgroundImage = global::ProyectoFinal.Properties.Resources.fondo4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1190, 667);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.player2);
             this.Controls.Add(this.player1);
             this.DoubleBuffered = true;
@@ -103,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.player2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -113,6 +144,8 @@
         private System.Windows.Forms.Timer timer2;
         public System.Windows.Forms.PictureBox player1;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

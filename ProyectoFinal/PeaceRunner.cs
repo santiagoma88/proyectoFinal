@@ -81,9 +81,9 @@ namespace ProyectoFinal
                 else if ((i%3) ==2 )
                 {
 
-                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 150 , 350+numero);
+                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 150 , 220+numero);
                     barreras[i].Size = new Size(800, 50);
-                    barreras[i + 1].Location = new Point((barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 150), 350+numero);
+                    barreras[i + 1].Location = new Point((barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 150), 430+numero2);
                     barreras[i + 1].Size = new Size(800, 50);
                 
                 }
@@ -97,7 +97,7 @@ namespace ProyectoFinal
                 }
                 barreras[i].Image = Properties.Resources.barrera;
                 barreras[i].SizeMode = PictureBoxSizeMode.StretchImage;
-                barreras[i + 1].Image = Properties.Resources.barrera;
+                barreras[i + 1].Image = Properties.Resources.barrera;                
                 barreras[i + 1].SizeMode = PictureBoxSizeMode.StretchImage;
                 this.Controls.Add(barreras[i]);
                 this.Controls.Add(barreras[i + 1]);
@@ -290,6 +290,7 @@ namespace ProyectoFinal
                 }
                 cambio = 1;
             }
+            label1.Location = new Point(player1.Location.X+player1.Size.Width+2,(player1.Location.Y+player1.Size.Height/2));
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -440,6 +441,7 @@ namespace ProyectoFinal
                 }
                 cambio = 1;
             }
+            label2.Location = new Point(player2.Location.X + player2.Size.Width + 2, (player2.Location.Y + player2.Size.Height / 2));
         }
             
 
@@ -564,10 +566,6 @@ namespace ProyectoFinal
             timer2.Stop();
             MessageBox.Show("Felicitaciones has Ganado.");
             this.Close();
-        }
-
-      
-
-          
+        }    
     }
 }
