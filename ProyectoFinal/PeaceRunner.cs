@@ -17,7 +17,7 @@ namespace ProyectoFinal
         Rectangle r1, r2;
         bool puedeCambiar1 = false;
         bool puedeCambiar2 = false;
-        
+        PictureBox ganaste;
         
         
         Random generador = new Random();
@@ -27,21 +27,40 @@ namespace ProyectoFinal
         {
             InitializeComponent();
             this.KeyPreview = true;
-            //par if((valor % 2) == 0)
             
-            int numero;
-            int aleatorio;
+            ganaste = new PictureBox();
+            
+            ganaste.Location = new Point(49500, 0);
+            ganaste.Size = new Size(1200, 700);
+            ganaste.Image = Properties.Resources.Ganaste;
+            ganaste.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.Controls.Add(ganaste);
+            
+
+            int numero,numero2;
+            int aleatorio,aleatorio2;
             for (int i = 0; i < barreras.Length;i += 2 )
             {
                 barreras[i] = new PictureBox();
                 barreras[i + 1] = new PictureBox();
                 aleatorio = (generador.Next(0, 200));
+                aleatorio2 = (generador.Next(0, 200));
+
                 if (aleatorio > 100)
                 {
                     numero = (aleatorio * (-1)) + 100;
                 }
                 else {
                     numero = aleatorio;
+                }
+
+                if (aleatorio2 > 100)
+                {
+                    numero2 = (aleatorio2 * (-1)) + 100;
+                }
+                else
+                {
+                    numero2 = aleatorio2;
                 }
                 
 
@@ -62,17 +81,17 @@ namespace ProyectoFinal
                 else if ((i%3) ==2 )
                 {
 
-                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 150 , 350);
+                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 150 , 350+numero);
                     barreras[i].Size = new Size(800, 50);
-                    barreras[i + 1].Location = new Point((barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 150), 350);
+                    barreras[i + 1].Location = new Point((barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 150), 350+numero);
                     barreras[i + 1].Size = new Size(800, 50);
                 
                 }
-                else 
+                else if (i<barreras.Length)
                 {
-                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 150, barreras[i - 2].Location.Y + numero);
+                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 150, 100 + numero);
                     barreras[i].Size = new Size(800, 50);
-                    barreras[i + 1].Location = new Point(barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 150, barreras[i - 1].Location.Y + numero);
+                    barreras[i + 1].Location = new Point(barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 150, 500 + numero2);
                     barreras[i + 1].Size = new Size(800, 50);
                 
                 }
@@ -519,12 +538,33 @@ namespace ProyectoFinal
         {
             foreach(PictureBox barrera in barreras)
             {
-                barrera.Location = new Point(barrera.Location.X - 15, barrera.Location.Y);
+                barrera.Location = new Point(barrera.Location.X - 10, barrera.Location.Y);
             }
-           
+            ganaste.Location = new Point(ganaste.Location.X - 10, ganaste.Location.Y);
+            if ((player1.Location.Y < -60 || player1.Location.Y > 700) && (player2.Location.Y< -60 || player2.Location.Y>700)) 
+            {
+                perder();
+            }
+            if (ganaste.Location.X < 0)
+            {
+                ganar();
+            }
+            
         }
 
-        
+        public void perder() 
+        {
+            timer2.Stop();
+            MessageBox.Show("lo siento han perdido, intentalo nuevamente");
+            this.Close();
+        }
+
+        public void ganar()
+        {
+            timer2.Stop();
+            MessageBox.Show("Felicitaciones has Ganado.");
+            this.Close();
+        }
 
       
 

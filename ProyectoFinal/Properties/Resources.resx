@@ -121,14 +121,20 @@
   <data name="player24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\player24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="player12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\player12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="player22" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\player22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="player21" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\player21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="peace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\peace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="barrera" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\barrera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="player14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\player14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="player11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\player11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,13 +148,10 @@
   <data name="player23" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\player23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="player12" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\player12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="player21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\player21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="player14" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\player14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="peace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\peace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ganaste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ganaste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
