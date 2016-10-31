@@ -21,14 +21,14 @@ namespace ProyectoFinal
         
         
         Random generador = new Random();
-        PictureBox[] barreras = new PictureBox[10];
+        PictureBox[] barreras = new PictureBox[100];
         
         public ventana()
         {
             InitializeComponent();
             this.KeyPreview = true;
-
-
+            //par if((valor % 2) == 0)
+            
             int numero;
             int aleatorio;
             for (int i = 0; i < barreras.Length;i += 2 )
@@ -47,19 +47,34 @@ namespace ProyectoFinal
 
                 if (i == 0)
                 {
-                    barreras[i].Location = new Point(0, 10);
+                    barreras[i].Location = new Point(0, 270);
                     barreras[i].Size = new Size(2000, 50);
-                    barreras[i + 1].Location = new Point(0, 600);
+                    barreras[i + 1].Location = new Point(0, 425);
                     barreras[i + 1].Size = new Size(2000, 50);
                 }
-                else
+                else if (i == 2)
+                {
+                    barreras[i].Location = new Point(2200, 15);
+                    barreras[i].Size = new Size(800, 50);
+                    barreras[i + 1].Location = new Point(2200, 600);
+                    barreras[i + 1].Size = new Size(800, 50);
+                }
+                else if ((i%3) ==2 )
                 {
 
-                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 70, barreras[i - 2].Location.Y + numero);
+                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 150 , 350);
                     barreras[i].Size = new Size(800, 50);
-                    barreras[i + 1].Location = new Point(barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 70, barreras[i - 1].Location.Y + numero);
+                    barreras[i + 1].Location = new Point((barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 150), 350);
                     barreras[i + 1].Size = new Size(800, 50);
-
+                
+                }
+                else 
+                {
+                    barreras[i].Location = new Point(barreras[i - 2].Location.X + barreras[i - 2].Size.Width + 150, barreras[i - 2].Location.Y + numero);
+                    barreras[i].Size = new Size(800, 50);
+                    barreras[i + 1].Location = new Point(barreras[i - 1].Location.X + barreras[i - 1].Size.Width + 150, barreras[i - 1].Location.Y + numero);
+                    barreras[i + 1].Size = new Size(800, 50);
+                
                 }
                 barreras[i].Image = Properties.Resources.barrera;
                 barreras[i].SizeMode = PictureBoxSizeMode.StretchImage;
@@ -504,7 +519,7 @@ namespace ProyectoFinal
         {
             foreach(PictureBox barrera in barreras)
             {
-                barrera.Location = new Point(barrera.Location.X - 10, barrera.Location.Y);
+                barrera.Location = new Point(barrera.Location.X - 15, barrera.Location.Y);
             }
            
         }

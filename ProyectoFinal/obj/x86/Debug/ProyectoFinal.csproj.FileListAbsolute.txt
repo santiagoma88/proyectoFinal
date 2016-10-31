@@ -6,3 +6,10 @@ C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\De
 C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.exe
 C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.pdb
 C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.csprojResolveAssemblyReference.cache
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.Menu.resources
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\Interop.ShockwaveFlashObjects.dll
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.csproj.ResolveComReference.cache
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\obj\x86\Debug\ProyectoFinal.JuegoOriginal.resources
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\bin\Debug\Interop.ShockwaveFlashObjects.dll
+C:\Users\santiago\Desktop\repositorio2010\ProyectoFinal\ProyectoFinal\bin\Debug\AxInterop.ShockwaveFlashObjects.dll
